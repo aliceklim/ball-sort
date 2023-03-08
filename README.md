@@ -1,5 +1,5 @@
 # ball-sort
-Is a programm which allows to use different type sort balls in the basket using different types of algorithms:
+Is a programm which allows to sort balls in the basket using different types of algorithms:
 - Heap sort
 - Quick sort
 - Merge sort
