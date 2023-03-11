@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 /**
- * The MergeSort class provides an implementation of the Merge Sort algorithm which cuts down a list
+ * The MergeSort class provides an implementation of the Merge Sorter algorithm which cuts down a list
  * into multiple sublists until each has only one item, then merges all the sublists into a sorted list.
  */
-public class MergeSort implements Sort {
+public class MergeSort implements Sorter {
     public <T> void sort(List<T> list, Comparator<T> comparator){
         mergeSort(list, comparator);
     }

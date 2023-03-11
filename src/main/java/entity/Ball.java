@@ -1,8 +1,8 @@
-package balls;
+package entity;
 
-import balls.constants.BallType;
-import balls.constants.Color;
-import balls.constants.Size;
+import entity.constants.BallType;
+import entity.constants.Color;
+import entity.constants.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +12,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Football extends Ball {
-    BallType ballType = BallType.FOOTBALL;
-    Size size = Size.BIG;
-    Color color = Color.WHITE;
-    String footballType;
+public class Ball {
+
+    BallType ballType;
+    Size size;
+    Color color;
 
     @Override
     public String toString() {

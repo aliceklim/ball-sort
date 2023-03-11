@@ -3,10 +3,10 @@ package sort;
 import java.util.Comparator;
 import java.util.List;
 /**
- * The HeapSort class provides an implementation of the Heap Sort algorithm which sorts by
+ * The HeapSort class provides an implementation of the Heap Sorter algorithm which sorts by
  * inserting the data into a heap and then repeatedly extracting the root of the heap
  */
-public class HeapSort implements Sort {
+public class HeapSort implements Sorter {
 
     public <T> void sort(List<T> list, Comparator<T> comparator) {
         heapify(list, comparator);

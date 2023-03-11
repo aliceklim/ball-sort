@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 /**
- * The TreeSort class is an implementation of the Sort interface that sorts a list using a binary tree.
+ * The TreeSort class is an implementation of the Sorter interface that sorts a list using a binary tree.
  */
-public class TreeSort implements Sort {
+public class TreeSort implements Sorter {
 
     /**
      * Creates a binary tree and inserts each element of the list into the tree using the Comparator.

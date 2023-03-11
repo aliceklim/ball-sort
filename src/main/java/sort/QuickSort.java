@@ -3,10 +3,10 @@ package sort;
 import java.util.Comparator;
 import java.util.List;
 /**
- * The QuickSort class provides an implementation of the Quick Sort algorithm. It works by
+ * The QuickSort class provides an implementation of the Quick Sorter algorithm. It works by
  * partitioning the list into two sublists around a pivot element, and then recursively sorting each sublist.
  */
-public class QuickSort implements Sort {
+public class QuickSort implements Sorter {
 
     public <T> void sort(List<T> list, Comparator<T> comparator){
         quickSort(list, 0, list.size() - 1, comparator);

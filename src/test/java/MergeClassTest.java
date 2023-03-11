@@ -1,88 +1,60 @@
+import entity.constants.BallType;
+import entity.constants.Color;
+import entity.constants.Size;
+import sort.BallComparator;
 import sort.MergeSort;
-import balls.*;
-import comparators.ColorComparator;
-import comparators.SizeComparator;
-import comparators.TypeComparator;
+import entity.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MergeClassTest {
 
-    MergeSort sort;
-    Comparator<Ball> comparator;
-    private Basket basket;
-    private Ball ball1;
-    private Ball ball2;
-    private Ball ball3;
-    private Ball ball4;
-    private Ball ball5;
-    private Ball ball6;
+    MergeSort sorter;
+    List<Ball> balls;
+    List<Ball> expected;
 
 
     @BeforeEach
     void setUp(){
-        sort = new MergeSort();
-        basket = new Basket();
-        List<Ball> balls = basket.getBalls();
-        ball1 = new Basketball();
-        ball2 = new Football();
-        ball3 = new Golf();
-        ball4 = new Tennis();
-        ball5 = new Volleyball();
-        ball6 = new Bowling();
-        balls.add(ball1);
-        balls.add(ball2);
-        balls.add(ball3);
-        balls.add(ball4);
-        balls.add(ball5);
-        balls.add(ball6);
+        sorter = new MergeSort();
+        balls = Arrays.asList(
+                new Ball(BallType.BASKETBALL, Size.BIG, Color.BROWN),
+                new Ball(BallType.FOOTBALL, Size.BIG, Color.WHITE),
+                new Ball(BallType.GOLF, Size.SMALL, Color.WHITE),
+                new Ball(BallType.TENNIS, Size.SMALL, Color.GREEN),
+                new Ball(BallType.VOLLEYBALL, Size.MEDIUM, Color.YELLOW),
+                new Ball(BallType.BOWLING, Size.BIG, Color.BLACK)
+        );
+        expected = new ArrayList<>(balls);
     }
 
     @Test
     void testQuickSortByColor() {
-        List<Ball> expected = new ArrayList<>();
-        expected.add(ball3);
-        expected.add(ball2);
-        expected.add(ball6);
-        expected.add(ball5);
-        expected.add(ball1);
-        expected.add(ball4);
-
-        sort.sort(basket.getBalls(), new ColorComparator());
-        Assertions.assertIterableEquals(expected, basket.getBalls());
+        sorter.sort(balls, BallComparator.compareByColor());
+        expected.sort(BallComparator.compareByColor());
+        Assertions.assertIterableEquals(expected.stream().map(Ball::getColor).collect(Collectors.toList()),
+                balls.stream().map(Ball::getColor).collect(Collectors.toList()));
     }
 
     @Test
     void testQuickSortByType() {
-        List<Ball> expected = new ArrayList<>();
-        expected.add(ball1);
-        expected.add(ball6);
-        expected.add(ball2);
-        expected.add(ball3);
-        expected.add(ball4);
-        expected.add(ball5);
-
-        sort.sort(basket.getBalls(), new TypeComparator());
-        Assertions.assertIterableEquals(expected, basket.getBalls());
+        sorter.sort(balls, BallComparator.compareByType());
+        expected.sort(BallComparator.compareByType());
+        Assertions.assertIterableEquals(expected.stream().map(Ball::getBallType).collect(Collectors.toList()),
+                balls.stream().map(Ball::getBallType).collect(Collectors.toList()));
     }
 
     @Test
     void testQuickSortBySize() {
-        List<Ball> expected = new ArrayList<>();
-        expected.add(ball4);
-        expected.add(ball3);
-        expected.add(ball5);
-        expected.add(ball6);
-        expected.add(ball2);//
-        expected.add(ball1);
-
-
-        sort.sort(basket.getBalls(), new SizeComparator());
-        Assertions.assertIterableEquals(expected, basket.getBalls());
+        sorter.sort(balls, BallComparator.compareBySize());
+        expected.sort(BallComparator.compareBySize());
+        Assertions.assertIterableEquals(expected.stream().map(Ball::getSize).collect(Collectors.toList()),
+                balls.stream().map(Ball::getSize).collect(Collectors.toList()));
     }
 }

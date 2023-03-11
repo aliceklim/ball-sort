@@ -1,4 +1,7 @@
-import balls.*;
+import entity.*;
+import entity.constants.BallType;
+import entity.constants.Color;
+import entity.constants.Size;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -6,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Class provides different sorting kinds for balls
+ * Class provides methods for creating of balls in basket, listing and clearing basket contents
  */
 public class Basket {
 
@@ -25,22 +28,22 @@ public class Basket {
             Ball ball;
             switch (ballType) {
                 case 0:
-                    ball = new Volleyball();
+                    ball = new Ball(BallType.VOLLEYBALL, Size.MEDIUM, Color.YELLOW);
                     break;
                 case 1:
-                    ball = new Golf();
+                    ball = new Ball(BallType.GOLF, Size.SMALL, Color.WHITE);
                     break;
                 case 2:
-                    ball = new Bowling();
+                    ball = new Ball(BallType.BOWLING, Size.BIG, Color.BLACK);
                     break;
                 case 3:
-                    ball = new Tennis();
+                    ball = new Ball(BallType.TENNIS, Size.SMALL, Color.GREEN);
                     break;
                 case 4:
-                    ball = new Football();
+                    ball = new Ball(BallType.FOOTBALL, Size.BIG, Color.WHITE);
                     break;
                 case 5:
-                    ball = new Basketball();
+                    ball = new Ball(BallType.BASKETBALL, Size.BIG, Color.BROWN);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + ballType);
@@ -53,5 +56,9 @@ public class Basket {
         for (Ball ball : balls) {
             System.out.println(ball.toString());
         }
+    }
+
+    public void clearBasket(){
+        balls.clear();
     }
 }

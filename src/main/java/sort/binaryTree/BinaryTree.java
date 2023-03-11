@@ -3,6 +3,10 @@ package sort.binaryTree;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Class provides possibility to insert nodes and perform an inorder traversal of the tree.
+ * It uses a generic type parameter T and a Comparator object to compare values.
+ */
 public class BinaryTree<T> {
 
     Node<T> root;

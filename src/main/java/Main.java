@@ -1,4 +1,3 @@
-import comparators.ColorComparator;
 import sort.MergeSort;
 
 import java.util.Comparator;
